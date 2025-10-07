@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -89,6 +90,7 @@ const casinos: Casino[] = [
 
 export default function Index() {
   const [activeTab, setActiveTab] = useState('all');
+  const navigate = useNavigate();
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, i) => (
@@ -213,7 +215,10 @@ export default function Index() {
                           </div>
                         </div>
                       </div>
-                      <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
+                      <Button 
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                        onClick={() => navigate(`/casino/${casino.id}`)}
+                      >
                         Обзор
                       </Button>
                     </div>
@@ -288,7 +293,10 @@ export default function Index() {
                           </div>
                         </div>
                       </div>
-                      <Button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold">
+                      <Button 
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
+                        onClick={() => navigate(`/casino/${casino.id}`)}
+                      >
                         Обзор
                       </Button>
                     </div>
